@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Views/JobScrollViewStyle.uss?fileID=7433441132597879392&amp;guid=35106888a398a44c295a005d71e392f3&amp;type=3#JobScrollViewStyle" />
     <ui:VisualElement name="Bg" style="height: 100%; width: 100%; background-color: rgb(221, 230, 236); -unity-background-image-tint-color: rgb(209, 209, 209);">
         <ui:VisualElement name="Header" style="height: 10%; margin-bottom: 0; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(155, 184, 209); opacity: 1; border-bottom-width: 2px; border-bottom-color: rgb(117, 144, 190); flex-direction: row;">
             <ui:GroupBox style="width: 25%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-direction: row;">
@@ -12,7 +13,7 @@
             </ui:GroupBox>
         </ui:VisualElement>
         <ui:VisualElement name="Background_matcher" style="height: 100%;">
-            <ui:ScrollView name="Jobs" mode="Horizontal" horizontal-scroller-visibility="AlwaysVisible" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" nested-interaction-kind="ForwardScrolling" scroll-deceleration-rate="0" elasticity="0" style="height: 100%; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;" />
+            <ui:ScrollView name="Jobs" mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" vertical-page-size="0" nested-interaction-kind="StopScrolling" style="height: 100%; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 40px; width: 100%; align-items: flex-end; position: absolute; flex-direction: row;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

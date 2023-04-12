@@ -136,9 +136,11 @@ public class Candidates_UI : MonoBehaviour
 
     private void ColorHidden(float pref, Label label)
     {
+        const int midlevel = 50;
         label.text = pref.ToString();
-        if (pref == 0) label.style.color = new Color(0, 0, 0, 0);
-        if (pref > 0) label.style.color = positiveHidden;
-        if (pref < 0) label.style.color = negativeHidden;
+
+        if (pref == midlevel) label.style.color = new Color(0, 0, 0, 0);
+        if (pref > midlevel) label.style.color = positiveHidden;
+        if (pref < midlevel) label.style.color = negativeHidden;
     }
 }

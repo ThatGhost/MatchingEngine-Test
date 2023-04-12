@@ -10,6 +10,9 @@ public class Controller : MonoBehaviour
     private ExtendedCandidate m_activeCandidate;
     private const float m_JobUpInterestValue = 10f;
     private const float m_JobDownInterestValue = 2.5f;
+    private const int m_CandidateStartPrefrence = 50;
+    private const int m_CandidateMinPrefrence = 0;
+    private const int m_CandidateMaxPrefrence = 100;
 
     private Job_UI job_UI;
     private Candidates_UI candidate_UI;
@@ -29,32 +32,32 @@ public class Controller : MonoBehaviour
                 new SectorPrefrence()
                 {
                     sector = Sector.Administrative,
-                    prefrence = 0,
+                    prefrence = m_CandidateStartPrefrence,
                 },
                 new SectorPrefrence()
                 {
                     sector = Sector.CustomerService,
-                    prefrence = 0,
+                    prefrence = m_CandidateStartPrefrence,
                 },
                 new SectorPrefrence()
                 {
                     sector = Sector.Flex,
-                    prefrence = 0,
+                    prefrence = m_CandidateStartPrefrence,
                 },
                 new SectorPrefrence()
                 {
                     sector = Sector.Food,
-                    prefrence = 0,
+                    prefrence = m_CandidateStartPrefrence,
                 },
                 new SectorPrefrence()
                 {
                     sector = Sector.Industry,
-                    prefrence = 0,
+                    prefrence = m_CandidateStartPrefrence,
                 },
                 new SectorPrefrence()
                 {
                     sector = Sector.Trade,
-                    prefrence = 0,
+                    prefrence = m_CandidateStartPrefrence,
                 },
 
             },
@@ -102,7 +105,8 @@ public class Controller : MonoBehaviour
             else
                 m_activeCandidate.realSectorPrefrence[i].prefrence -= m_JobDownInterestValue;
 
-            m_activeCandidate.realSectorPrefrence[i].prefrence = Mathf.Clamp(m_activeCandidate.realSectorPrefrence[i].prefrence, -40, 100);
+            m_activeCandidate.realSectorPrefrence[i].prefrence
+                = Mathf.Clamp(m_activeCandidate.realSectorPrefrence[i].prefrence, m_CandidateMinPrefrence, m_CandidateMaxPrefrence);
         }
         candidate_UI.fillForm(m_activeCandidate);
         Rematch();

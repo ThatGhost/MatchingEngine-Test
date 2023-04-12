@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Linq;
 using System;
+using System.Xml.Linq;
 
 public class JobItem_UI
 {
@@ -13,7 +14,6 @@ public class JobItem_UI
     private Color worst_Color = new Color(0.7843137f, 0.4745098f, 0.5385448f);
 
     private Label Job_Name;
-    private Label Job_Descr;
     private Label Job_Sector;
     private Label Job_City;
     private Label Job_Statutes;
@@ -27,13 +27,14 @@ public class JobItem_UI
     private VisualElement Job_Image;
     private Controller m_controller;
     private VisualElement Job_Background;
+    private VisualElement Job_Root;
     private ExtendedJob m_Job;
 
     public void SetVisualElement(VisualElement element)
     {
+        Job_Root = element;
         Job_Image = element.Q<VisualElement>("Picture");
         Job_Name = element.Q<Label>("Job_Name");
-        Job_Descr = element.Q<Label>("Job_Descr");
         Job_Sector = element.Q<Label>("Job_Sector");
         Job_City = element.Q<Label>("Job_City");
         Job_Statutes = element.Q<Label>("Job_Statutes");
@@ -60,7 +61,6 @@ public class JobItem_UI
 
         Job_Image.style.backgroundImage = new StyleBackground(image);
         Job_Name.text = jobItem.job.jobName;
-        Job_Descr.text = jobItem.job.description;
         Job_Sector.text = System.Enum.GetName(typeof(Sector),jobItem.job.sector);
         Job_City.text = jobItem.job.city;
         string statutes = "";
@@ -77,6 +77,10 @@ public class JobItem_UI
         Job_MatchScore.text = Mathf.Ceil(jobItem.matcherScore).ToString();
 
         Job_Background.style.backgroundColor = getColorByQuality(jobItem.jobQuality);
+        Job_Root.style.width = 500;
+        Job_Root.style.height = 870;
+        //Job_Root.style.scale = new StyleScale(new Scale(new Vector3(1.0f,1.03f,1.0f)));
+        Job_Root.style.marginRight = new StyleLength(60);
     }
 
     private Color getColorByQuality(JobQuality quality)
